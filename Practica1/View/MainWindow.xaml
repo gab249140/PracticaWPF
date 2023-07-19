@@ -1,0 +1,72 @@
+﻿<Window x:Class="Practica1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practica1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+
+    <StackPanel Orientation="Vertical">
+        <!--<StackPanel Height="40"  HorizontalAlignment="Left">
+            <ListBox Width="100" ItemsSource="{Binding Usuario}" SelectedItem="{Binding SelectedUsuario}" DisplayMemberPath="Nombre" />
+        </StackPanel>-->
+
+        <GroupBox Margin="10">
+            <Grid Height="127" DataContext="{Binding SelectedUsuario}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Nombre" HorizontalAlignment="Left" 
+                       VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" Height="27"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtNombre" Height="27" 
+                       Margin="5"  Width="300" HorizontalAlignment="Left"
+                         Text="{Binding Nombre}"/>
+                <Label Content="ApellidoPaterno" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                       Grid.Row="1" Grid.Column="0" Height="27"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtApellidoP" Height="27" 
+                       Margin="5" Width="300" HorizontalAlignment="Left"
+                         Text="{Binding ApellidoPaterno}"/>
+                <Label Content="ApellidoMaterno" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                       Grid.Row="2" Grid.Column="0" Height="27"/>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtApellidoM" Height="27" 
+                       Margin="5" Width="300" HorizontalAlignment="Left"
+                         Text="{Binding ApellidoMaterno}"/>
+                <Label Content="Edad" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                       Grid.Row="3" Grid.Column="0" Height="27"/>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtEdad" Height="27"
+                       Margin="5" Width="70" HorizontalAlignment="Left"
+                         Text="{Binding Edad}"/>
+                <Button Grid.Row="4" Grid.Column="1" x:Name="btnGuardar" Height="27" Width="80" Content="Guardar" Command="{Binding SaveUser}" />
+                <Button Grid.Row="4" Grid.Column="1" x:Name="btnActualizar" Height="27" Width="80" Margin="200,0,10,0"  Content="Actualizar" Command="{Binding UdateUser}" />
+            </Grid>
+        </GroupBox>
+        <!--<StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right" DataContext="{Binding SelectedUsuario}">
+            <Button x:Name="btnGuardar" Height="30" Width="80" Content="Guardar" Command="{Binding SaveUser}" />
+            <Button x:Name="btnActualizar" Height="30" Width="80" Margin="5,0,10,0"  Content="Actualizar" Command="{Binding UdateUser}" />
+        </StackPanel>-->
+        <StackPanel Height="210">
+            <ListView ItemsSource="{Binding Path=Usuario}" SelectedItem="{Binding Path=SelectedUsuario}"  Height="200" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="IdUsuario" Width="100" DisplayMemberBinding="{Binding IdUsuario}" />
+                        <GridViewColumn Header="Nombre" Width="100" DisplayMemberBinding="{Binding Nombre}" />
+                        <GridViewColumn Header="ApellidoPaterno" Width="100" DisplayMemberBinding="{Binding ApellidoPaterno}" />
+                        <GridViewColumn Header="ApellidoMaterno" Width="100" DisplayMemberBinding="{Binding ApellidoMaterno}" />
+                        <GridViewColumn Header="Edad" Width="100" DisplayMemberBinding="{Binding Edad}" />
+                    </GridView>
+                </ListView.View>
+                    
+            </ListView>
+        </StackPanel>
+    </StackPanel>
+
+</Window>
